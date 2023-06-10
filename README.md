@@ -32,7 +32,7 @@ To do that, you must drag and drop the downloaded \*.msi installer to **InstallS
 
 Once installed, SparkAR should open and work fine for non-script projects. It's still possible that SparkAR won't boot if you have a very old GPU (You'll have the same problem on win10).
 
-To make scripting to work on projects, you should replace the **node-win-x64.exe** from the SparkAR installation folder (that is not compatible with Windows 7) with the latest Windows 7 compatible version of Node.js (14.17.6) that you can find here in this git with the same file name, and then add a new user environment variable with name: **NODE_SKIP_PLATFORM_CHECK** and value **1**
+To make scripting to work on projects, you must add a new user environment variable with name: **NODE_SKIP_PLATFORM_CHECK** and value **1**. Additionally, on some SparkAR versions you might need to replace **node-win-x64.exe** from the SparkAR installation folder with a Windows 7 compatible version of Node.js like the one in this git.
 
 To make it work for latest SparkAR versions, you'll also need to use the same **dnsapi** patch created for Lens Studio, and also replace **GetHostNameW** API call that doesn't exists for win7:
-With a HEX editor replace on **ARStudioWindows.exe** the strings **GetHostNameW** with... I've used **GetHostName** and it's working, and **DNSAPI.dll** with **DNSAP7.dll** and copy **DNSAP7.dll** to SparkAR installation dir.
+With a HEX editor replace on **ARStudioWindows.exe** the strings **GetHostNameW** with... I've used **gethostname** and it's working, the strings **GetThreadDescription** with... I've used **GetThreadContext** and it's working, and **DNSAPI.dll** with **DNSAP7.dll** and copy **DNSAP7.dll** to SparkAR installation dir.
